@@ -1,6 +1,7 @@
-async function rpc_execute(model, method, args) {
+function rpc_execute(model, method, args) {
+	//2020-07-18: Still unable to get return value directly when calling this function. Might need to use other libraries.
+	const XHR = new XMLHttpRequest();
 	return new Promise((resolve,reject) =>{
-		const XHR = new XMLHttpRequest();
 		XHR.open("POST",'/rpc');
 		XHR.setRequestHeader('Content-Type', 'application/json');
 		const data = {
@@ -10,8 +11,7 @@ async function rpc_execute(model, method, args) {
 		}
 		XHR.send(JSON.stringify(data));
 		XHR.onreadystatechange=function(){
-			console.log(XHR.response);
-			resolve(return_val);
+			resolve(XHR);
 		}
 	})
 }

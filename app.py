@@ -13,7 +13,7 @@ app = Flask(__name__)
 def home():
 	return render_template('index.html')
 
-
+#max edit to test git push 27 July 2020, 9:57pm
 
 @app.route('/rpc',methods=['GET','POST'])
 def rpc():
